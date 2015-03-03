@@ -13,7 +13,7 @@ Now, do:
 
 1. Clone this repro to the location you want the project to live. 
 
-2. Change directory to `cd js-boilerplate`. 
+2. Change directory to `cd node-vagrant-boilerplate`. 
 
 3. Start the virtual machine using `vagrant up` 
 
