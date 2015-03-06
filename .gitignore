@@ -3,6 +3,8 @@ logs
 *.log
 
 .vagrant
+.idea
+app/.idea
 
 # Runtime data
 pids
