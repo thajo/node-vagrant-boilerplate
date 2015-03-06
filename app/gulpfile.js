@@ -35,4 +35,12 @@ gulp.task('debug', function() {
       execArgv: ['--debug-brk']
     };
     server.listen( debugOptions);
+
+    function restart( file ) {
+        server.changed( function( error ) {
+            if( ! error ) livereload.changed( file.path );
+        });
+    }
+
+    gulp.watch( serverFiles ).on( 'change', restart );
 });
