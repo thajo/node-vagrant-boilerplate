@@ -23,6 +23,9 @@ problems with node, vagrant and 0.0.0.0 vs. 127.0.0.1 [https://groups.google.com
 5. Change directory to `cd /vagrant/app`
 
 6. Install all dependencies with `npm install`
+7.  Don´t forget to update the github url to your own repo: `git remote set-url origin  git@github.com:user/reponame.git`
+
+
 
 ## Daily workflow
 1. Start out by `vagrant up` your machine and ssh into it (`sh vagrant-ssh-node.sh`). Change directory to `cd /vagrant/app`.
