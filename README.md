@@ -1,8 +1,13 @@
 This is a boilerplate to be used for nodejs-assignments. The virtual machine (Ubuntu 32bit) 
-will have the following default installed:
+will have the following default installed (if using master branch):
 * node.js
 * npm
 * git 
+
+In branch "with_mongodb" following is also included:
+* mongodb
+* mongoose
+* express
 
 ## Install
 Make sure you have the following installed on your system:
