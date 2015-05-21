@@ -9,6 +9,9 @@ In branch "with_mongodb" following is also included:
 * mongoose
 * express
 
+Clone down the specific branch with:
+`git clone -b with_mongodb --single-branch https://github.com/thajo/node-vagrant-boilerplate.git vagrant`
+
 ## Install
 Make sure you have the following installed on your system:
 * Virtual Box [https://www.virtualbox.org/](https://www.virtualbox.org/)
