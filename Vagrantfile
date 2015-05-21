@@ -20,6 +20,9 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 3000, host: 8080
   config.vm.network "forwarded_port", guest: 5858, host: 5858
 
+  # Do we need this
+  #config.vm.network "forwarded_port", guest: 27017, host: 27017
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
@@ -68,6 +71,15 @@ Vagrant.configure(2) do |config|
 
     sudo apt-get install -y npm
     sudo apt-get install -y git
+
+    # Installing mongo-db (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+    sudo apt-get update
+    sudo apt-get install mongodb-10gen
+    sudo service mongod start
+
+    cd /vagrant/app && npm install
 
    SHELL
 

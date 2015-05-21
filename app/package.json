@@ -7,10 +7,11 @@
   "private": true,
   "author": "John Häggerud <john.haggerud@lnu.se>",
   "scripts": {
-    "start": "node app.js"
+    "gulp": "gulp",
+    "gulp:default": "gulp default",
+    "gulp:debug": "gulp debug"
   },
   "devDependencies": {
-
     "gulp": "^3.6.0",
     "gulp-jshint": "^1.5.3",
     "gulp-plumber": "^0.6.3",
@@ -19,9 +20,8 @@
     "gulp-develop-server": "^0.3.0",
     "gulp-livereload": "^3.8.0"
   },
-  "scripts": {
-    "gulp"          : "gulp",
-    "gulp:default"    : "gulp default",
-    "gulp:debug"  : "gulp debug"
-   }
+  "dependencies": {
+    "mongoose": "^4.0.3",
+    "express": "^4.12.4"
+  }
 }

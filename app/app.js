@@ -1,7 +1,28 @@
-var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello John the great\n');
-    console.log("Got connection");
-}).listen(3000, '0.0.0.0'); // hmmm...why not 127.0.0.1?
-console.log('Server running at http://127.0.0.1:3000/');
+var express = require('express');
+var app = express();
+var mongoose = require('mongoose');
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+var server = app.listen(3000, function () {
+
+
+
+
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log('Example app listening at http://%s:%s', host, port);
+
+	mongoose.connect('mongodb://localhost/test');
+	mongoose.connection.on('connected', function (error) {
+	 if(error) {
+	 	return console.log(error);
+	 }
+	 console.log("Connection to mongoDB worked!");
+	});
+
+
+});
