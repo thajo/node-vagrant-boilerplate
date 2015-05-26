@@ -9,6 +9,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = "ubuntu/trusty32"
 
+
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -20,6 +22,9 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 3000, host: 8080
   config.vm.network "forwarded_port", guest: 5858, host: 5858
 
+  # Do we need this
+  #config.vm.network "forwarded_port", guest: 27017, host: 27017
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
@@ -27,16 +32,23 @@ Vagrant.configure(2) do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  # config.vm.network "public_network"
+  config.vm.network :private_network, ip: '192.168.50.50'
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder ".", "/vagrant", nfs: true
+
+
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
+  # trim it!
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  end
   # Example for VirtualBox:
   #
   # config.vm.provider "virtualbox" do |vb|
@@ -68,6 +80,15 @@ Vagrant.configure(2) do |config|
 
     sudo apt-get install -y npm
     sudo apt-get install -y git
+
+    # Installing mongo-db (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+    sudo apt-get update
+    sudo apt-get install mongodb-10gen
+    sudo service mongod start
+
+    cd /vagrant/app && npm install
 
    SHELL
 
