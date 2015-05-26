@@ -28,8 +28,8 @@ problems with node, vagrant and 0.0.0.0 vs. 127.0.0.1 [https://groups.google.com
 5. Change directory to `cd /vagrant/app`
 
 6. Install all dependencies with `npm install`
-7.  Don´t forget to update the github url to your own repo: `git remote set-url origin  git@github.com:user/reponame.git`
 
+7.  Don´t forget to update the github url to your own repo: `git remote set-url origin  git@github.com:user/reponame.git`
 
 
 ## Daily workflow
@@ -51,3 +51,5 @@ If you make a change in the application the server application will restart.
 2. Make sure you have configured the WebStorm "Run --> Edit configuration --> Add new configuration --> Node.js remote debug
 3. Run the debugger and it will now debug on the vagrant server
 
+## Vagrant tips
+If you running mac or linux the vagrant file is updated with nfs-support. That could mean you have to write your root password. Check the vagrant documantion for tips: https://docs.vagrantup.com/v2/synced-folders/nfs.html
